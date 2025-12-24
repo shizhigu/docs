@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Outer square frame - dark for light background -->
-  <rect x="2" y="2" width="28" height="28" stroke="#1a1a1a" stroke-width="2" fill="none"/>
-  <!-- Inner signal dot - Electric Green -->
-  <rect x="12" y="12" width="8" height="8" fill="#00FF7F"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 36" fill="none">
+  <!-- SKOUT text - bold -->
+  <text x="0" y="26" font-family="'SF Pro Display', system-ui, sans-serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#1a1a1a">SKOUT</text>
+
+  <!-- LAB text - accent color, lighter weight -->
+  <text x="78" y="26" font-family="'SF Pro Display', system-ui, sans-serif" font-size="24" font-weight="400" letter-spacing="2" fill="#00C853">LAB</text>
+
+  <!-- Subtle underline accent -->
+  <rect x="78" y="30" width="52" height="2" rx="1" fill="#00C853" opacity="0.6"/>
 </svg>
