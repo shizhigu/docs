@@ -1,229 +1,246 @@
 ---
 title: Data Steward 架构
-description: 内部开发笔记 - 数据存储设计
+description: 内部开发笔记 - 简化版设计
 ---
 
 <Warning>
 这是内部开发笔记，不对外公开。
 </Warning>
 
-## 存储架构概览
+## 设计理念
 
-Data Steward 使用**双层存储**：
+**核心原则**：Less is more
 
-| 存储类型 | 用途 | 谁用 |
-|----------|------|------|
-| **SQLite** (steward.db) | 结构化数据、查询、状态管理 | Agent 程序化操作 |
-| **Markdown 文件** | 人类可读文档、长文本知识 | 用户阅读、Agent 参考 |
+Data Steward 的使命：
+1. **学习** - 理解业务数据含义
+2. **发现** - 找到有趣的模式/异常
+3. **协作** - 与用户定义规则
+4. **交接** - 触发 Analysis Agent 深入调查
 
----
-
-## SQLite 数据库 (`/data/memory/steward.db`)
-
-Agent 的"大脑"，用于程序化操作。
-
-### 表结构
-
-```sql
--- 任务队列
-tasks (
-    id, type, target, priority, status,
-    created_at, started_at, completed_at, notes
-)
-
--- 工作日志
-work_log (
-    id, iteration, task_id, action, result, timestamp
-)
-
--- 告警记录（结构化）
-alerts (
-    id, type, severity, connection_id, table_name,
-    title, description, status, created_at, resolved_at, metadata
-)
-
--- KPI 历史（时序数据）
-kpi_history (
-    id, connection_id, kpi_name, value, previous_value,
-    change_pct, recorded_at
-)
-
--- Schema 快照（变化检测）
-schema_snapshots (
-    id, connection_id, table_name, column_info, row_count, snapshot_at
-)
-
--- Agent 状态
-agent_state (
-    key, value, updated_at
-)
-```
-
-### 典型用法
-
-```python
-import sqlite3
-conn = sqlite3.connect('/data/memory/steward.db')
-
-# 获取下一个任务
-task = conn.execute('''
-    SELECT * FROM tasks WHERE status = 'pending'
-    ORDER BY priority DESC, created_at ASC LIMIT 1
-''').fetchone()
-
-# 记录 KPI
-conn.execute('''
-    INSERT INTO kpi_history (connection_id, kpi_name, value, change_pct)
-    VALUES (?, ?, ?, ?)
-''', (conn_id, 'daily_revenue', 125000, -12.3))
-```
+**不做的事**：
+- ❌ KPI 监控（用户有 dashboard）
+- ❌ 数据质量检查（有专门工具）
+- ❌ Schema 变更检测（data engineering 的活）
+- ❌ 定时任务调度（ops 的活）
 
 ---
 
-## 文件系统 (`/data/memory/`)
+## 存储架构
 
-人类可读 + Agent 长文本知识。
-
-### 目录结构
+**纯 Markdown，没有 SQLite。**
 
 ```
 /data/memory/
-│
-├── steward.db                    # SQLite 数据库
-│
-├── profile.md                    # 用户画像
-├── attention.md                  # 关注配置
-│
-├── docs/
-│   └── task_guide.md             # Agent 任务指南
-│
-├── briefings/
-│   ├── latest.md                 # 最新汇报（给老板看）
-│   └── history/                  # 历史存档
-│
-├── sources/{conn_id}/
-│   ├── understanding.md          # 业务语义理解
-│   ├── quirks.md                 # 数据陷阱、坑
-│   ├── patterns.md               # 常用查询模式
-│   └── kpis.md                   # KPI 定义
-│
-├── monitoring/
-│   └── scripts/                  # Agent 自己写的监控脚本
-│
-├── alerts/
-│   ├── pending/                  # 待处理告警（Markdown 详情）
-│   └── archive/                  # 已处理
-│
-├── insights/                     # 有价值的发现
-│
-└── snapshots/                    # 文件形式的快照（备用）
-    ├── kpi/
-    └── schema/
+├── understanding/           # 业务理解
+│   └── {conn_id}.md
+├── discoveries/             # 发现的东西
+│   └── {timestamp}_{slug}.md
+├── requests/                # 交给 Analysis Agent 的请求
+│   └── {id}.md
+├── briefings/               # 给用户的摘要
+│   └── latest.md
+├── docs/                    # Agent 指南
+│   └── guide.md
+└── rules.md                 # 用户定义的关注规则
 ```
 
 ---
 
-## 数据分工原则
+## 文件格式
 
-### 写 SQLite 的场景
+### `understanding/{conn_id}.md`
 
-| 数据 | 为什么用 SQLite |
-|------|-----------------|
-| **任务队列** | 需要 ORDER BY、状态更新 |
-| **工作日志** | 结构化查询、统计 |
-| **告警记录** | 按状态筛选、计数 |
-| **KPI 历史** | 时序分析、趋势计算 |
-| **Schema 快照** | JSON 对比、变化检测 |
+Agent 对数据源的理解：
 
-### 写文件的场景
+```markdown
+# orders_db
 
-| 数据 | 为什么用文件 |
-|------|-------------|
-| **briefings/latest.md** | 用户直接阅读 |
-| **understanding.md** | 长文本、自由格式 |
-| **quirks.md** | 追加式记录 |
-| **kpis.md** | KPI 定义文档（不是历史值） |
-| **监控脚本** | Python 代码文件 |
+## Overview
+电商订单数据，包含订单、用户、商品信息。
 
-### 双写的场景
+## Key Tables
+- orders: 订单记录
+- users: 用户信息
+- products: 商品目录
 
-有些数据两边都有，用途不同：
+## Key Fields
+- orders.total_amount: 订单金额（含税）
+- orders.status: PENDING → PAID → SHIPPED → COMPLETED
 
-| 数据 | SQLite | 文件 |
-|------|--------|------|
-| **Alerts** | 结构化记录（查询、统计） | Markdown 详情（人类阅读） |
-| **KPI** | 历史值（kpi_history 表） | 定义文档（kpis.md） |
+## Business Context (Confirmed)
+- 大促后通常有 10-15% 自然回落
+- 周末订单量比工作日高约 20%
+
+## Open Questions
+- discount_type 字段的含义？
+```
+
+### `discoveries/{timestamp}_{slug}.md`
+
+发现的东西，用 frontmatter 标记状态：
+
+```markdown
+---
+status: new
+type: anomaly
+connection_id: orders_db
+---
+
+# 11月收入下降 12%
+
+## What I Found
+11月收入 $125k，比10月 $142k 下降 12%。
+
+## Evidence
+- 订单量持平
+- 客单价下降 10%
+- 大单数量减少 42%
+
+## Possible Explanations
+1. 大促结束效应
+2. B2B 订单减少
+3. 季节性？
+
+## Suggested Action
+需要深入调查，已创建分析请求。
+```
+
+**Status**: `new` → `investigating` → `confirmed` → `dismissed`
+
+### `rules.md`
+
+用户定义的关注规则：
+
+```markdown
+# Watch Rules
+
+## Active Rules
+- [ ] 日收入下降超过 15%
+- [ ] 订单取消率超过 5%
+- [ ] 出现异常大单（>$10,000）
+
+## Recently Triggered
+- [x] 收入下降 → discoveries/2024-01-15_revenue_drop.md
+```
+
+### `requests/{id}.md`
+
+交给 Analysis Agent 的请求：
+
+```markdown
+---
+status: pending
+discovery: 2024-01-15_revenue_drop
+---
+
+# 调查11月收入下降
+
+## Question
+11月收入下降 12%，为什么？是问题还是正常现象？
+
+## Context
+见 discoveries/2024-01-15_revenue_drop.md
+
+## For Analysis Agent
+1. 是否季节性模式？
+2. 什么导致客单价下降？
+3. 为什么大单减少？
+
+## Result
+（Analysis Agent 完成后填写）
+```
 
 ---
 
 ## Agent 工作流程
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│  收到 "Continue Working" 消息                            │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│  1. 查询 SQLite: SELECT * FROM tasks WHERE status='pending' │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│  2. 执行任务（如 SCHEMA_AUDIT）                          │
-│     - 读取数据源 schema                                  │
-│     - 对比 schema_snapshots 表                          │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│  3. 写入结果                                             │
-│     - INSERT INTO alerts (SQLite)                       │
-│     - 写 alerts/pending/xxx.md (详情文件)                │
-│     - INSERT INTO work_log (SQLite)                     │
-│     - UPDATE tasks SET status='completed'               │
-└─────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────┐
-│  4. 如果是 DAILY_REPORT 任务                            │
-│     - 查询 SQLite 汇总数据                              │
-│     - 写 briefings/latest.md (人类可读)                 │
-└─────────────────────────────────────────────────────────┘
+读取现有知识 (understanding/)
+        ↓
+探索数据 (sample, query)
+        ↓
+检查用户规则 (rules.md)
+        ↓
+发现有趣的东西？
+        ↓ Yes
+写入 discoveries/
+        ↓
+需要深入调查？
+        ↓ Yes
+创建 requests/
+        ↓
+更新 briefings/latest.md
+        ↓
+继续探索...
 ```
 
 ---
 
-## 初始化代码位置
+## 消息系统
 
-| 组件 | 文件 | 函数 |
-|------|------|------|
-| SQLite Schema | `prompts_steward.py` | `SQLITE_SCHEMA` |
-| 初始任务 | `prompts_steward.py` | `INITIAL_TASKS` |
-| 任务指南 | `prompts_steward.py` | `TASK_GUIDE` |
-| 目录创建 | `modal/agent.py` | `_init_memory_structure()` |
-| DB 初始化 | `modal/agent.py` | `_init_steward_db()` |
-| 指南写入 | `modal/agent.py` | `_init_task_guide()` |
+只有两种消息：
+
+1. **初始消息** - 首次启动时
+2. **继续消息** - 之后一直发 "Continue"
+
+Agent 自己决定做什么，不需要复杂的消息编排。
 
 ---
 
-## 待定 / 需要澄清
+## 与 Analysis Agent 的交接
 
-<Note>
-以下是设计上还有点模糊的地方，需要后续明确：
-</Note>
+```
+Continuous Learning Agent          Analysis Agent
+        │                               │
+        │  发现异常                      │
+        │      ↓                        │
+        │  创建 requests/{id}.md        │
+        │      ↓                        │
+        │  (status: pending)            │
+        │      ↓                        │
+        └──────────────────────────────→│
+                                        │
+                                   读取请求
+                                        │
+                                   深入调查
+                                        │
+                                   填写 Result
+                                        │
+                                   更新 status
+```
 
-1. **alerts 双写**：SQLite 和文件都存，是否必要？
-   - 当前：SQLite 存结构化，文件存详情
-   - 考虑：是否可以只用 SQLite + 一个 description 字段？
+---
 
-2. **snapshots 目录**：目前有 `snapshots/kpi/` 和 `snapshots/schema/`，但 SQLite 也有表
-   - 当前：两边都有
-   - 考虑：文件可能是冗余的，SQLite 够用
+## 代码位置
 
-3. **briefings 历史**：`briefings/history/` 目录存什么格式？
-   - 考虑：`{date}.md` 文件名
+| 组件 | 文件 |
+|------|------|
+| Agent 指南 | `prompts_steward.py` → `GUIDE` |
+| 继续消息 | `prompts_steward.py` → `CONTINUE_MESSAGE` |
+| 初始消息 | `prompts_steward.py` → `build_initial_message()` |
+| 目录初始化 | `modal/agent.py` → `_init_memory_structure()` |
+| 指南写入 | `modal/agent.py` → `_init_guide()` |
 
-4. **与 Analysis Agent 联动**：如何共享知识？
-   - 当前：两个 Agent 独立
-   - 考虑：Analysis Agent 启动时读取 `sources/{conn_id}/*.md`
+---
+
+## 为什么这样设计？
+
+| 选择 | 原因 |
+|------|------|
+| 纯 Markdown | Agent 自然读写，人类方便检查 |
+| 没有 SQLite | 不需要复杂查询，避免双存 |
+| 没有任务调度 | Agent 自己决定做什么 |
+| 只有一种消息 | 简单，智能在 Agent 侧 |
+| 聚焦发现 | 这是我们的差异化价值 |
+
+---
+
+## 差异化定位
+
+| 现有工具 | 做什么 | SkoutLab |
+|---------|-------|----------|
+| Dashboard | 展示你定义的指标 | 发现你没想到的指标 |
+| 监控告警 | 基于规则触发 | 自动学习什么是异常 |
+| BI 工具 | 回答已知问题 | 发现未知问题 |
+
+**SkoutLab 的定位**：发现你不知道要问的问题。
