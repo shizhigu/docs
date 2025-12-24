@@ -1,80 +1,74 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quickstart
+description: Get your first insights in 5 minutes
 ---
 
-## Get started in three steps
+## Step 1: Connect Your Data
 
-Get your documentation site running locally and make your first customization.
+<Steps>
+  <Step title="Go to Data Sources">
+    Click **Data** in the sidebar to open the data management page.
+  </Step>
+  <Step title="Add a Connection">
+    Click **Add Connection** and choose your data source type:
+    - **Upload Files** — Excel, CSV, or Parquet files
+    - **Database** — Connect to PostgreSQL, MySQL, or other databases
+  </Step>
+  <Step title="Let AI Learn">
+    Once connected, click **Start Learning**. Our AI will automatically explore your data structure, understand relationships, and build knowledge about your business.
+  </Step>
+</Steps>
 
-### Step 1: Set up your local environment
+<Info>
+The learning process runs in the background. You can start asking questions immediately — the AI will get smarter over time.
+</Info>
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+## Step 2: Ask Your First Question
 
-### Step 2: Deploy your changes
+<Steps>
+  <Step title="Create a New Task">
+    Click **New Task** from the home page.
+  </Step>
+  <Step title="Select Your Data">
+    Choose which data sources to analyze.
+  </Step>
+  <Step title="Ask a Question">
+    Type your question in plain language:
+    - "What drove revenue changes last quarter?"
+    - "Which products are underperforming?"
+    - "Are there any anomalies in the data?"
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    Or leave it blank — SkoutLab will explore and find interesting patterns automatically.
+  </Step>
+  <Step title="Get Results">
+    SkoutLab's AI agents will:
+    1. Generate hypotheses about your data
+    2. Test each hypothesis with statistical analysis
+    3. Present findings with evidence and charts
+  </Step>
+</Steps>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## Step 3: Review Your Report
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Each analysis produces a report with:
 
-### Step 3: Go live
+| Section | What You'll See |
+|---------|-----------------|
+| **Key Findings** | Top insights ranked by business impact |
+| **Evidence** | Charts, statistics, and data backing each finding |
+| **Next Steps** | Recommended actions based on the analysis |
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+<Tip>
+Click on any finding to see the detailed analysis, including the AI's reasoning process and supporting evidence.
+</Tip>
 
-## Next steps
-
-Now that you have your docs running, explore these key features:
+## What's Next?
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="Connect More Data" icon="database" href="/getting-started/connect-data">
+    Add more data sources for richer insights
+  </Card>
+  <Card title="Understand Reports" icon="file-chart-column" href="/getting-started/understand-reports">
+    Learn how to interpret and act on findings
+  </Card>
 </CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>

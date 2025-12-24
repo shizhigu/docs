@@ -1,68 +1,68 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "SkoutLab",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Getting Started",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "getting-started/connect-data",
+              "getting-started/first-analysis",
+              "getting-started/understand-reports"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Features",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "features/data-connections",
+              "features/knowledge-builder",
+              "features/smart-analysis",
+              "features/reports"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Use Cases",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "use-cases/sales-analysis",
+              "use-cases/financial-review",
+              "use-cases/operations-insights"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Concepts",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Core Concepts",
             "pages": [
-              "api-reference/introduction"
+              "concepts/agent-native",
+              "concepts/hypotheses",
+              "concepts/continuous-learning"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Resources",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "concepts/faq",
+              "concepts/security"
             ]
           }
         ]
@@ -71,13 +71,13 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "App",
+          "href": "https://app.skoutlab.com",
+          "icon": "rocket"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://skoutlab.com/blog",
           "icon": "newspaper"
         }
       ]
@@ -91,32 +91,20 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@skoutlab.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Get Started",
+      "href": "https://app.skoutlab.com"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/skoutlab",
+      "github": "https://github.com/skoutlab",
+      "linkedin": "https://linkedin.com/company/skoutlab"
     }
   }
 }

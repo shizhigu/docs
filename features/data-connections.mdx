@@ -1,0 +1,64 @@
+---
+title: Data Connections
+description: Bring all your data together
+---
+
+## Overview
+
+SkoutLab connects to your data wherever it lives. Once connected, our AI continuously learns your data structure and business context.
+
+## Supported Sources
+
+### File Uploads
+
+| Format | Description |
+|--------|-------------|
+| **Excel** (.xlsx, .xls) | Full support including multiple sheets |
+| **CSV** | Standard comma-separated values |
+| **Parquet** | Columnar format for large datasets |
+
+### Databases
+
+| Database | Status |
+|----------|--------|
+| **PostgreSQL** | Supported |
+| **MySQL** | Supported |
+| **MotherDuck** | Supported |
+| **BigQuery** | Coming soon |
+| **Snowflake** | Coming soon |
+
+## Multi-Source Analysis
+
+SkoutLab excels at analyzing data across multiple sources:
+
+<CardGroup cols={2}>
+  <Card title="Cross-Reference" icon="link">
+    Find relationships between different data sources automatically
+  </Card>
+  <Card title="Unified View" icon="layer-group">
+    Ask questions that span multiple datasets
+  </Card>
+</CardGroup>
+
+**Example:** Connect your CRM data and financial data, then ask:
+> "Which customer segments have the highest lifetime value?"
+
+SkoutLab will automatically join and analyze data from both sources.
+
+## Data Security
+
+<Info>
+- All connections are encrypted in transit and at rest
+- Credentials are stored using industry-standard encryption
+- SkoutLab is read-only — we never modify your data
+- You can delete connections and all associated data at any time
+</Info>
+
+## Managing Connections
+
+From the **Data** page, you can:
+
+- View all connected data sources
+- See when each source was last synced
+- Monitor the Knowledge Builder status
+- Edit or delete connections

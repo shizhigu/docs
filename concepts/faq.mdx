@@ -1,0 +1,92 @@
+---
+title: FAQ
+description: Frequently asked questions about SkoutLab
+---
+
+## General
+
+<AccordionGroup>
+  <Accordion title="What is SkoutLab?">
+    SkoutLab is an AI-powered data analysis platform. Instead of building dashboards or writing queries, you connect your data and ask questions in plain language. Our AI agents explore your data, generate hypotheses, validate findings, and present actionable insights.
+  </Accordion>
+
+  <Accordion title="How is it different from traditional BI tools?">
+    Traditional BI tools (Tableau, PowerBI, etc.) give you charts — you still have to figure out what they mean. SkoutLab gives you answers and explanations. Our AI does the analytical work that would normally require a human analyst.
+  </Accordion>
+
+  <Accordion title="Do I need technical skills?">
+    No. SkoutLab is designed for business users. You don't need to write SQL, Python, or build dashboards. Just connect your data and ask questions in plain language.
+  </Accordion>
+
+  <Accordion title="What languages are supported?">
+    You can ask questions in English or Chinese. Reports are generated in the same language you use.
+  </Accordion>
+</AccordionGroup>
+
+## Data & Security
+
+<AccordionGroup>
+  <Accordion title="Is my data secure?">
+    Yes. All data is encrypted in transit (TLS) and at rest (AES-256). Credentials are stored using industry-standard encryption. We never share your data with other users or use it to train models.
+  </Accordion>
+
+  <Accordion title="Does SkoutLab modify my database?">
+    No. SkoutLab is read-only. We query your data but never write, update, or delete anything in your source systems.
+  </Accordion>
+
+  <Accordion title="What happens if I delete a connection?">
+    All associated data, learnings, and analysis history are permanently deleted from our systems.
+  </Accordion>
+
+  <Accordion title="Where is data stored?">
+    SkoutLab runs on secure cloud infrastructure. Data processing happens in isolated environments. Contact us for specific compliance questions.
+  </Accordion>
+</AccordionGroup>
+
+## Analysis
+
+<AccordionGroup>
+  <Accordion title="How long does an analysis take?">
+    Typically 2-5 minutes, depending on data size and question complexity. Simple questions on small datasets are faster; complex exploratory analyses take longer.
+  </Accordion>
+
+  <Accordion title="What if the AI gets something wrong?">
+    SkoutLab provides confidence levels and evidence for every finding. Always review the evidence before taking action. If you find errors, they help improve future analyses.
+  </Accordion>
+
+  <Accordion title="Can I ask follow-up questions?">
+    Yes! Each finding has an "Investigate Further" option that creates a new focused analysis. You can iterate to dig deeper into specific areas.
+  </Accordion>
+
+  <Accordion title="What does 'Confirmed' mean?">
+    A confirmed hypothesis has passed statistical significance testing (p < 0.05 by default). This means there's less than 5% probability the pattern is due to random chance.
+  </Accordion>
+</AccordionGroup>
+
+## Pricing & Limits
+
+<AccordionGroup>
+  <Accordion title="Is there a free tier?">
+    Contact us for current pricing and trial options.
+  </Accordion>
+
+  <Accordion title="Are there data size limits?">
+    File uploads are limited to 100MB per file. For larger datasets, use database connections. Contact us for enterprise-scale needs.
+  </Accordion>
+
+  <Accordion title="How is usage calculated?">
+    Usage is based on analysis tasks and data processed. Knowledge Builder running time also counts toward usage.
+  </Accordion>
+</AccordionGroup>
+
+## Getting Help
+
+<AccordionGroup>
+  <Accordion title="How do I get support?">
+    Email us at support@skoutlab.com or use the in-app feedback button.
+  </Accordion>
+
+  <Accordion title="Is there documentation for API access?">
+    API access is coming soon. Contact us if you have integration needs.
+  </Accordion>
+</AccordionGroup>

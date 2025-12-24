@@ -1,0 +1,93 @@
+---
+title: Knowledge Builder
+description: AI that continuously learns your data
+---
+
+## What is Knowledge Builder?
+
+Knowledge Builder is SkoutLab's continuous learning system. Once you connect data, it works in the background to:
+
+- **Understand** your data structure and relationships
+- **Monitor** for changes, anomalies, and trends
+- **Build** institutional knowledge about your business
+
+<Tip>
+Think of it as an analyst who's always reviewing your data, even when you're not asking questions.
+</Tip>
+
+## How It Works
+
+When you click **Start Learning**, Knowledge Builder begins a continuous cycle:
+
+<Steps>
+  <Step title="Schema Discovery">
+    Scans all tables, columns, and data types. Identifies primary keys, foreign keys, and relationships.
+  </Step>
+  <Step title="Semantic Understanding">
+    Goes beyond schema to understand what fields mean:
+    - "revenue" vs "sales" vs "income" — same concept?
+    - Status codes: what does "1", "2", "3" mean?
+    - Currency fields: USD? Local currency?
+  </Step>
+  <Step title="Pattern Recognition">
+    Finds common patterns in your data:
+    - Typical value ranges
+    - Seasonal trends
+    - Normal vs abnormal distributions
+  </Step>
+  <Step title="Continuous Monitoring">
+    Watches for changes and anomalies:
+    - New data arriving
+    - Unexpected values
+    - Schema changes
+  </Step>
+</Steps>
+
+## What Knowledge Builder Creates
+
+### Data Understanding
+
+For each data source, Knowledge Builder documents:
+
+| Knowledge Type | Description |
+|----------------|-------------|
+| **Structure** | Tables, columns, relationships |
+| **Semantics** | What fields actually mean in business terms |
+| **Quality** | Data issues, missing values, inconsistencies |
+| **Patterns** | Common query patterns and best practices |
+
+### Alerts & Insights
+
+Knowledge Builder can detect:
+
+- **Schema changes** — New columns, dropped tables
+- **Data freshness issues** — Data not updating as expected
+- **Anomalies** — Values outside normal ranges
+- **Quality degradation** — Increasing null rates, duplicates
+
+## Starting Knowledge Builder
+
+<Steps>
+  <Step title="Go to Data Page">
+    Navigate to the Data section in the sidebar.
+  </Step>
+  <Step title="Click Start Learning">
+    Click the **Start Learning** button in the Knowledge Builder panel.
+  </Step>
+  <Step title="Let It Run">
+    Knowledge Builder runs continuously in the background. You can stop it anytime.
+  </Step>
+</Steps>
+
+<Warning>
+Knowledge Builder uses compute resources while running. For cost efficiency, you may want to run it periodically rather than continuously, especially for large datasets.
+</Warning>
+
+## Benefits for Analysis
+
+When you create an analysis task, Knowledge Builder's learning improves results:
+
+- **Faster analysis** — AI already knows your data structure
+- **Better accuracy** — Understanding of business semantics
+- **Fewer errors** — Awareness of data quality issues
+- **Richer insights** — Historical context and patterns

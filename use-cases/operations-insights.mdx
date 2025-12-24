@@ -1,0 +1,130 @@
+---
+title: Operations Insights
+description: Optimize efficiency and spot issues early
+---
+
+## Overview
+
+Operational data is often the richest but least analyzed. SkoutLab helps operations teams find inefficiencies, predict issues, and optimize processes.
+
+## Common Questions
+
+<CardGroup cols={2}>
+  <Card title="Efficiency" icon="gauge-high">
+    - Where are the bottlenecks?
+    - What's causing delays?
+    - How can we reduce cycle time?
+  </Card>
+  <Card title="Quality" icon="check-double">
+    - What's driving defects/errors?
+    - Where are SLAs at risk?
+    - What predicts quality issues?
+  </Card>
+  <Card title="Capacity" icon="scale-unbalanced">
+    - Are we over/under capacity?
+    - What's utilization by team/resource?
+    - When will we hit limits?
+  </Card>
+  <Card title="Patterns" icon="chart-scatter">
+    - When do issues occur?
+    - What's the root cause of recurring problems?
+    - Are there hidden correlations?
+  </Card>
+</CardGroup>
+
+## Example: Support Operations
+
+**Question asked:**
+> "Why has average ticket resolution time increased?"
+
+**What SkoutLab found:**
+
+<AccordionGroup>
+  <Accordion title="Finding 1: Ticket volume up 45%, staffing up 10%">
+    **Status:** Confirmed
+
+    Ticket growth significantly outpaced team growth. Average tickets per agent increased from 28 to 36 per week.
+
+    **Recommended action:** Evaluate hiring plan or explore automation
+  </Accordion>
+
+  <Accordion title="Finding 2: Complex tickets increasing">
+    **Status:** Confirmed
+
+    "Integration" category tickets up 89%, require 3x longer than average. Product launch created new support burden.
+
+    **Recommended action:** Create integration documentation; consider specialist team
+  </Accordion>
+
+  <Accordion title="Finding 3: Tier escalations taking longer">
+    **Status:** Confirmed
+
+    Time-to-escalation increased from 4 hours to 11 hours. Tier 2 backlog growing.
+
+    **Recommended action:** Review escalation criteria and Tier 2 capacity
+  </Accordion>
+</AccordionGroup>
+
+## Data You'll Need
+
+| Data | Why It Helps |
+|------|--------------|
+| **Tickets/Cases** | Support, service requests, incidents |
+| **Time tracking** | Cycle times, wait times, resolution times |
+| **Resource data** | Team capacity, assignments, utilization |
+| **Quality metrics** | Errors, rework, SLA compliance |
+
+## Operations-Specific Analysis
+
+### Process Mining
+
+SkoutLab identifies:
+- Actual process flows (vs documented)
+- Bottlenecks and delays
+- Rework loops
+- Handoff inefficiencies
+
+### Predictive Signals
+
+Finds leading indicators:
+- What predicts escalation?
+- What signals quality issues?
+- What drives cycle time?
+
+### Anomaly Detection
+
+Catches operational issues:
+- Unusual volumes or patterns
+- SLA breach risk
+- Capacity constraints
+
+## Tips for Operations Analysis
+
+<CardGroup cols={2}>
+  <Card title="Define Metrics" icon="ruler">
+    "Resolution time" is clearer than "performance"
+  </Card>
+  <Card title="Time Boundaries" icon="clock">
+    Specify periods for meaningful comparison
+  </Card>
+  <Card title="Segment by Type" icon="layer-group">
+    "For enterprise tickets" or "in the billing queue"
+  </Card>
+  <Card title="Ask About Root Causes" icon="magnifying-glass">
+    "What's causing X" gets deeper than "show me X"
+  </Card>
+</CardGroup>
+
+## Sample Questions to Try
+
+```
+"What's causing delays in our order fulfillment process?"
+
+"Which support ticket types have the lowest customer satisfaction?"
+
+"Are there patterns in when system incidents occur?"
+
+"What predicts whether a ticket will need escalation?"
+
+"Where are we losing time in the customer onboarding process?"
+```

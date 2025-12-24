@@ -1,0 +1,108 @@
+---
+title: Sales Analysis
+description: Understand what's driving your revenue
+---
+
+## Overview
+
+Sales data is complex — products, regions, customers, time periods. SkoutLab helps you cut through the noise to find what actually matters.
+
+## Common Questions
+
+<CardGroup cols={2}>
+  <Card title="Performance" icon="chart-line">
+    - Why did sales change last quarter?
+    - Which products are underperforming?
+    - What's driving regional differences?
+  </Card>
+  <Card title="Patterns" icon="chart-scatter">
+    - When do customers buy?
+    - What's our best-selling segment?
+    - Are there seasonal patterns?
+  </Card>
+  <Card title="Customers" icon="users">
+    - Who are our best customers?
+    - What predicts high-value deals?
+    - Which segments are growing?
+  </Card>
+  <Card title="Operations" icon="gears">
+    - How is my sales team performing?
+    - What's our conversion rate?
+    - Where are deals getting stuck?
+  </Card>
+</CardGroup>
+
+## Example: Revenue Drop Investigation
+
+**Question asked:**
+> "Why did Q4 revenue drop compared to Q3?"
+
+**What SkoutLab found:**
+
+<AccordionGroup>
+  <Accordion title="Finding 1: Enterprise segment declined 23%">
+    **Status:** Confirmed (p < 0.01)
+
+    The Enterprise segment dropped from $2.1M to $1.6M. Further investigation showed 3 large renewals pushed to Q1.
+
+    **Recommended action:** Review pipeline for delayed Enterprise deals
+  </Accordion>
+
+  <Accordion title="Finding 2: New product launch underperformed">
+    **Status:** Confirmed (p < 0.05)
+
+    Product X launched in Q4 but achieved only 40% of forecast. Win rate for Product X deals: 12% vs 34% company average.
+
+    **Recommended action:** Investigate Product X competitive positioning
+  </Accordion>
+
+  <Accordion title="Finding 3: Seasonal effect — normal pattern">
+    **Status:** Confirmed
+
+    Q4 shows 8-12% seasonal dip in prior years. Current drop is within historical range when adjusted for Enterprise timing.
+
+    **Recommended action:** No action needed — expected pattern
+  </Accordion>
+</AccordionGroup>
+
+## Data You'll Need
+
+For comprehensive sales analysis, connect:
+
+| Data | Why It Helps |
+|------|--------------|
+| **CRM/Sales data** | Deals, pipeline, activities |
+| **Product catalog** | Categories, pricing, margins |
+| **Customer data** | Segments, industries, sizes |
+| **Historical sales** | For trend and seasonality analysis |
+
+## Tips for Sales Analysis
+
+<CardGroup cols={2}>
+  <Card title="Include Time Context" icon="calendar">
+    "Q4 vs Q3" or "this year vs last" helps identify trends vs anomalies
+  </Card>
+  <Card title="Specify Segments" icon="layer-group">
+    Mention specific products, regions, or customer types you care about
+  </Card>
+  <Card title="Start Broad" icon="magnifying-glass">
+    Let SkoutLab explore first, then drill into specific findings
+  </Card>
+  <Card title="Iterate" icon="rotate">
+    Use follow-up questions to dig deeper into interesting findings
+  </Card>
+</CardGroup>
+
+## Sample Questions to Try
+
+```
+"What's driving our revenue growth this quarter?"
+
+"Which sales reps are outperforming and why?"
+
+"What do our best customers have in common?"
+
+"Where are we losing deals to competitors?"
+
+"Is there a pattern in deals that close quickly?"
+```

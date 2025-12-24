@@ -1,0 +1,111 @@
+---
+title: Security & Privacy
+description: How we protect your data
+---
+
+## Our Commitment
+
+Your data is your most valuable business asset. We take its protection seriously.
+
+<Info>
+**TL;DR:** Your data is encrypted, isolated, and never shared. We're read-only — we can't modify your source systems.
+</Info>
+
+## Data Protection
+
+### Encryption
+
+| Layer | Protection |
+|-------|------------|
+| **In Transit** | TLS 1.3 encryption for all connections |
+| **At Rest** | AES-256 encryption for stored data |
+| **Credentials** | Industry-standard secrets management |
+
+### Isolation
+
+- Each customer's data is isolated in separate environments
+- No cross-customer data access
+- Analysis runs in sandboxed compute environments
+
+### Access Control
+
+- Role-based access within your organization
+- Audit logs for all data access
+- SSO integration available (Enterprise)
+
+## What We Access
+
+### Read-Only
+
+SkoutLab operates in **read-only mode**:
+- We query your data
+- We never write, update, or delete
+- We can't modify your source systems
+
+### Minimal Access
+
+We only access what's needed:
+- Tables/files you explicitly connect
+- Metadata for schema understanding
+- Query results for analysis
+
+## Data Lifecycle
+
+### Storage
+
+| Data Type | Retention |
+|-----------|-----------|
+| **Connection credentials** | Until you delete the connection |
+| **Analysis results** | Until you delete them |
+| **Knowledge/learnings** | Until you delete the connection |
+| **Usage logs** | 90 days |
+
+### Deletion
+
+When you delete a connection:
+- All associated data is permanently deleted
+- Analysis history referencing that data is removed
+- Learnings from that data source are erased
+
+<Warning>
+Deletion is permanent and cannot be undone. Export any reports you need before deleting connections.
+</Warning>
+
+## Compliance
+
+### Current
+
+- SOC 2 Type I (in progress)
+- GDPR compliant data handling
+- Standard contractual clauses available
+
+### Roadmap
+
+- SOC 2 Type II
+- HIPAA (for healthcare customers)
+- ISO 27001
+
+Contact us for specific compliance requirements.
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Use Read-Only Credentials" icon="eye">
+    When connecting databases, create read-only users for SkoutLab
+  </Card>
+  <Card title="Limit Table Access" icon="table">
+    Only connect tables needed for analysis
+  </Card>
+  <Card title="Regular Review" icon="clock">
+    Periodically review connected data sources
+  </Card>
+  <Card title="Team Access" icon="users">
+    Use role-based access to control who sees what
+  </Card>
+</CardGroup>
+
+## Questions?
+
+For security inquiries: security@skoutlab.com
+
+For compliance documentation: Request via your account manager

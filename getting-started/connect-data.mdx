@@ -1,0 +1,79 @@
+---
+title: Connect Your Data
+description: Bring your data into SkoutLab
+---
+
+SkoutLab works with your existing data — no need to change how you store it.
+
+## Supported Data Sources
+
+<CardGroup cols={2}>
+  <Card title="File Upload" icon="file-excel">
+    - Excel (.xlsx, .xls)
+    - CSV files
+    - Parquet files
+  </Card>
+  <Card title="Databases" icon="database">
+    - PostgreSQL
+    - MySQL
+    - MotherDuck (DuckDB)
+    - More coming soon
+  </Card>
+</CardGroup>
+
+## Uploading Files
+
+<Steps>
+  <Step title="Click Add Connection">
+    From the Data page, click **Add Connection**.
+  </Step>
+  <Step title="Choose Upload">
+    Select **Upload Files** as your connection type.
+  </Step>
+  <Step title="Drag and Drop">
+    Drop your files into the upload area. You can upload multiple files at once.
+  </Step>
+  <Step title="Name Your Connection">
+    Give this data source a meaningful name (e.g., "Sales Data Q4" or "Customer Records").
+  </Step>
+</Steps>
+
+<Warning>
+**File size limits**: Individual files up to 100MB. For larger datasets, consider using a database connection.
+</Warning>
+
+## Connecting a Database
+
+<Steps>
+  <Step title="Click Add Connection">
+    From the Data page, click **Add Connection**.
+  </Step>
+  <Step title="Choose Database Type">
+    Select your database type from the list.
+  </Step>
+  <Step title="Enter Credentials">
+    Provide connection details:
+    - Host / Connection string
+    - Database name
+    - Username and password
+  </Step>
+  <Step title="Test Connection">
+    Click **Test** to verify the connection works before saving.
+  </Step>
+</Steps>
+
+<Info>
+Your credentials are encrypted and stored securely. SkoutLab only reads data — it never modifies your database.
+</Info>
+
+## After Connecting
+
+Once your data is connected:
+
+1. **Start Learning** — Click the "Start Learning" button to let AI explore your data
+2. **View Schema** — See what tables and columns were discovered
+3. **Ask Questions** — Start creating analysis tasks
+
+<Tip>
+The more data you connect, the more powerful the insights. SkoutLab can find patterns across multiple data sources.
+</Tip>

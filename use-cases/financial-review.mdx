@@ -1,0 +1,129 @@
+---
+title: Financial Review
+description: Deeper insights into your financial data
+---
+
+## Overview
+
+Financial data requires precision and context. SkoutLab helps finance teams move beyond reporting to understanding — finding the "why" behind the numbers.
+
+## Common Questions
+
+<CardGroup cols={2}>
+  <Card title="Performance" icon="chart-line">
+    - Why did margins change?
+    - What's driving cost increases?
+    - Where are we over/under budget?
+  </Card>
+  <Card title="Trends" icon="arrow-trend-up">
+    - How are unit economics evolving?
+    - What's the runway impact?
+    - Are expenses scaling efficiently?
+  </Card>
+  <Card title="Anomalies" icon="triangle-exclamation">
+    - Are there unusual transactions?
+    - What's causing variance?
+    - Are there data quality issues?
+  </Card>
+  <Card title="Planning" icon="calendar">
+    - What drives forecast accuracy?
+    - Where are budgets typically off?
+    - What assumptions need revisiting?
+  </Card>
+</CardGroup>
+
+## Example: Margin Analysis
+
+**Question asked:**
+> "Why did gross margin decline from 68% to 62% this quarter?"
+
+**What SkoutLab found:**
+
+<AccordionGroup>
+  <Accordion title="Finding 1: Product mix shift">
+    **Status:** Confirmed (explains 4 of 6 points)
+
+    Lower-margin products grew 34% while high-margin products grew only 8%. The product mix alone accounts for 4 percentage points of margin decline.
+
+    **Recommended action:** Review pricing strategy for growing product lines
+  </Accordion>
+
+  <Accordion title="Finding 2: Infrastructure costs increased">
+    **Status:** Confirmed (explains 1.5 points)
+
+    Cloud infrastructure costs up 28%, outpacing revenue growth of 18%. Cost per customer increased from $12 to $15.
+
+    **Recommended action:** Engineering review of infrastructure efficiency
+  </Accordion>
+
+  <Accordion title="Finding 3: One-time professional services">
+    **Status:** Confirmed (explains 0.5 points)
+
+    $180K in consulting fees for compliance project. Non-recurring expense affecting current quarter only.
+
+    **Recommended action:** No action — one-time expense
+  </Accordion>
+</AccordionGroup>
+
+## Data You'll Need
+
+| Data | Why It Helps |
+|------|--------------|
+| **P&L / Income Statement** | Revenue and expense breakdown |
+| **Budget/Forecast** | For variance analysis |
+| **Transaction details** | Line-item analysis for anomalies |
+| **Historical periods** | Trend and seasonality detection |
+
+## Finance-Specific Capabilities
+
+### Variance Analysis
+
+SkoutLab automatically:
+- Compares actual vs budget/forecast
+- Identifies largest drivers of variance
+- Distinguishes one-time vs recurring impacts
+
+### Anomaly Detection
+
+Flags unusual patterns:
+- Transactions outside normal ranges
+- Unexpected category spikes
+- Missing or duplicate entries
+
+### Trend Analysis
+
+Identifies:
+- Metric trajectory (improving, declining, stable)
+- Seasonality patterns
+- Inflection points
+
+## Tips for Financial Analysis
+
+<CardGroup cols={2}>
+  <Card title="Specify Periods" icon="calendar">
+    "This quarter vs last quarter" or "YoY" gives context
+  </Card>
+  <Card title="Name Metrics" icon="hashtag">
+    "Gross margin" is clearer than "profitability"
+  </Card>
+  <Card title="Include Benchmarks" icon="scale-balanced">
+    Mention targets or thresholds you care about
+  </Card>
+  <Card title="Layer Analysis" icon="layer-group">
+    Start with summary, then drill into specific line items
+  </Card>
+</CardGroup>
+
+## Sample Questions to Try
+
+```
+"What's causing the variance between actual and budgeted expenses?"
+
+"Which cost categories are growing faster than revenue?"
+
+"Are there any unusual transactions this month?"
+
+"How do our unit economics compare to 6 months ago?"
+
+"What's driving the change in customer acquisition cost?"
+```

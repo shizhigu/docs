@@ -1,0 +1,92 @@
+---
+title: Understanding Reports
+description: How to read and act on SkoutLab findings
+---
+
+## Report Structure
+
+Every SkoutLab analysis produces a structured report designed for action, not just information.
+
+### Executive Summary
+
+At the top of each report, you'll find:
+
+- **Key takeaways** — The 3-5 most important findings
+- **Overall assessment** — Risk, opportunity, or status quo
+- **Recommended actions** — What to do next
+
+### Individual Findings
+
+Each finding is a validated hypothesis with:
+
+<AccordionGroup>
+  <Accordion title="Status Badge">
+    - **Confirmed** — Statistical evidence supports this finding
+    - **Refuted** — Data contradicts the hypothesis
+    - **Inconclusive** — More data needed
+  </Accordion>
+  <Accordion title="Impact Score">
+    Business significance rated from Low to Critical, based on:
+    - Financial impact
+    - Scope (how much data affected)
+    - Urgency
+  </Accordion>
+  <Accordion title="Evidence Section">
+    - Visualizations (charts, graphs)
+    - Statistical metrics (p-values, confidence intervals)
+    - Data samples supporting the conclusion
+  </Accordion>
+  <Accordion title="Next Steps">
+    - **Investigate** — Questions to explore further
+    - **Action** — Concrete steps to take
+    - **Verify** — How to confirm the finding
+  </Accordion>
+</AccordionGroup>
+
+## Interpreting Findings
+
+### What "Confirmed" Means
+
+When SkoutLab marks a finding as **Confirmed**, it means:
+
+- The pattern exists in your data (not random chance)
+- Statistical tests passed significance thresholds
+- The finding is reproducible
+
+<Info>
+SkoutLab uses a significance level of 0.05 by default — meaning there's less than 5% probability the finding is due to chance.
+</Info>
+
+### Understanding Impact
+
+| Impact Level | What It Means |
+|--------------|---------------|
+| **Critical** | Requires immediate attention; significant business risk or opportunity |
+| **High** | Important finding that should inform decisions |
+| **Medium** | Worth noting; may warrant follow-up |
+| **Low** | Informational; no immediate action needed |
+
+## Acting on Reports
+
+<Steps>
+  <Step title="Review Executive Summary">
+    Start with the top-level findings to understand the big picture.
+  </Step>
+  <Step title="Dig Into High-Impact Items">
+    Click on Critical and High impact findings to see full evidence.
+  </Step>
+  <Step title="Follow Recommended Actions">
+    Each finding includes specific next steps — use these as starting points.
+  </Step>
+  <Step title="Ask Follow-Up Questions">
+    Create a new task to explore specific findings in more depth.
+  </Step>
+</Steps>
+
+## Sharing Reports
+
+Reports can be:
+
+- **Viewed online** — Share a link with stakeholders
+- **Exported** — Download as PDF for presentations
+- **Referenced** — Findings are saved for future comparison
