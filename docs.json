@@ -66,6 +66,17 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Dev Notes",
+        "groups": [
+          {
+            "group": "Architecture",
+            "pages": [
+              "dev-notes/data-steward-architecture"
+            ]
+          }
+        ]
       }
     ],
     "global": {
