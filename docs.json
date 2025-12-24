@@ -73,6 +73,7 @@
           {
             "group": "Architecture",
             "pages": [
+              "dev-notes/arq-worker-architecture",
               "dev-notes/data-steward-architecture"
             ]
           }

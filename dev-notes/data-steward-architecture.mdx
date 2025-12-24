@@ -226,27 +226,58 @@ Agent 自己决定做什么，不需要复杂的消息编排。
 
 ---
 
-## 与 Analysis Agent 的交接
+## Orchestrator 架构
+
+统一的 Orchestrator 协调 CL Agent 和 Analysis Agent：
 
 ```
-Continuous Learning Agent          Analysis Agent
-        │                               │
-        │  发现异常                      │
-        │      ↓                        │
-        │  创建 requests/{id}.md        │
-        │      ↓                        │
-        │  (status: pending)            │
-        │      ↓                        │
-        └──────────────────────────────→│
-                                        │
-                                   读取请求
-                                        │
-                                   深入调查
-                                        │
-                                   填写 Result
-                                        │
-                                   更新 status
+                    ┌─────────────────────┐
+                    │   Task Orchestrator │
+                    │   (orchestrator.py) │
+                    └──────────┬──────────┘
+                               │
+            ┌──────────────────┼──────────────────┐
+            │                  │                  │
+            ▼                  ▼                  ▼
+    ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
+    │  CL Agent     │  │ Analysis Agent│  │ Report Agent  │
+    │  (Steward)    │  │ (Monte Carlo) │  │ (Future)      │
+    └───────────────┘  └───────────────┘  └───────────────┘
 ```
+
+### 交接机制
+
+**两种方式触发分析**：
+
+1. **文件驱动**（推荐）- CL Agent 写 `requests/{id}.md`，Orchestrator 扫描并触发
+2. **内联信号** - CL Agent 输出特殊格式，Orchestrator 实时捕获
+
+```python
+# 内联信号格式
+ANALYSIS_REQUEST:{"discovery_id": "...", "question": "...", "priority": "high"}:END_REQUEST
+```
+
+### 分层 Monte Carlo
+
+Analysis Agent 使用分层探索架构，而不是 50×3 的暴力探索：
+
+```
+Layer 1: Theme Discovery (8 agents)
+         │
+         ▼
+    24 hypothesis ideas → cluster → 8-12 unique themes
+         │
+         ▼
+Layer 2: Deep Dive (1-2 agents per theme)
+         │
+         ▼
+    10-15 validated hypotheses
+```
+
+**优势**：
+- ~15 agents vs 50 agents（成本降低 70%）
+- 主题确保覆盖多样性
+- 深度探索产出更高质量
 
 ---
 
@@ -254,11 +285,19 @@ Continuous Learning Agent          Analysis Agent
 
 | 组件 | 文件 |
 |------|------|
+| **CL Agent** | |
 | Agent 指南 | `prompts_steward.py` → `GUIDE` |
 | 继续消息 | `prompts_steward.py` → `CONTINUE_MESSAGE` |
 | 初始消息 | `prompts_steward.py` → `build_initial_message()` |
 | 目录初始化 | `modal/agent.py` → `_init_memory_structure()` |
-| 指南写入 | `modal/agent.py` → `_init_guide()` |
+| 有界执行 | `modal/agent.py` → `continuous_learn_bounded()` |
+| **Orchestrator** | |
+| 统一协调 | `orchestrator.py` → `UnifiedOrchestrator` |
+| 分层 Monte Carlo | `layered_orchestrator.py` → `run_layered_analysis()` |
+| **Analysis Agent（复用现有）** | |
+| 主题发现 | `modal/agent.py` → `theme_discovery()` |
+| 深度探索 | `monte_carlo_orchestrator.py` → `run_explorer_agent()` (复用) |
+| 假设验证 | `modal/agent.py` → `full_stack_analyst()` + `validate_hypothesis()` |
 
 ---
 
