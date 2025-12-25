@@ -1,9 +1,9 @@
 ---
-title: Automation & Monitoring
-description: Keep AI agents watching your data around the clock
+title: Automation & Scheduled Analyses
+description: Let AI agents rerun investigations on a cadence without manual effort
 ---
 
-SkoutLab can do more than ad-hoc analyses. Use automation to keep tabs on your business without re-running tasks manually.
+SkoutLab can do more than one-off analyses. Automation keeps critical investigations running on a cadence so teams always receive fresh context without re-triggering tasks by hand.
 
 ## Components
 
@@ -12,7 +12,7 @@ SkoutLab can do more than ad-hoc analyses. Use automation to keep tabs on your b
     Learns schema, semantics, and historical baselines.
   </Card>
   <Card title="Continuous Learning Panel" icon="waveform">
-    Toggle always-on monitoring from the Data page.
+    Control background learning cycles from the Data page.
   </Card>
   <Card title="Scheduled Tasks" icon="calendar">
     Run recurring analyses (weekly/monthly) for key metrics.
@@ -23,15 +23,15 @@ SkoutLab can do more than ad-hoc analyses. Use automation to keep tabs on your b
 
 Once you enable the **Knowledge Builder**:
 
-- Agents periodically re-scan connections.
-- Schema drifts or refresh failures trigger warnings in the Data page.
-- The learning badge shows when the last pass completed.
+- Agents periodically re-scan connections to keep their understanding fresh.
+- Learning passes capture schema changes and quality notes that downstream analyses can reference.
+- The learning badge shows when the last pass completed so you know how current the context is.
 
 <Steps>
   <Step title="Enable">
     From **Data → Knowledge Builder**, click **Start Learning**. Choose full-auto (find issues + auto-run analyses) or semi-auto (queue recommendations for approval).
   </Step>
-  <Step title="Monitor">
+  <Step title="Review">
     The panel shows status (`Learning`, `Idle`, `Error`). Errors include log links so you can retry after fixing credentials.
   </Step>
   <Step title="Pause">
@@ -64,10 +64,10 @@ Set up a weekly “Revenue Health” task. SkoutLab will rerun the analysis, com
 
 <CardGroup cols={2}>
   <Card title="Critical KPIs" icon="heart-pulse">
-    Revenue, churn, inventory, or operational metrics you must know about immediately.
+    Revenue, churn, inventory, or operational metrics that deserve a recurring deep-dive.
   </Card>
-  <Card title="Data Quality Watch" icon="binoculars">
-    Let Knowledge Builder alert you when new columns appear or refreshes fail.
+  <Card title="Data Quality Context" icon="binoculars">
+    Keep Knowledge Builder running so analyses understand new columns or refresh gaps.
   </Card>
   <Card title="Quarterly Briefings" icon="calendar-days">
     Schedule deep-dives ahead of board meetings.

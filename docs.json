@@ -48,6 +48,8 @@
           {
             "group": "Use Cases",
             "pages": [
+              "use-cases/saas-intelligence",
+              "use-cases/ecommerce-ops",
               "use-cases/sales-analysis",
               "use-cases/financial-review",
               "use-cases/operations-insights"

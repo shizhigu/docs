@@ -1,0 +1,49 @@
+---
+title: E-commerce Intelligence
+description: Deep retail analytics for conversion, merchandising, and supply signals
+---
+
+## Overview
+
+Commerce journeys span ads → onsite behavior → checkout → fulfillment → repeat purchase. SkoutLab's agents trace that chain end-to-end, cross-checking historical patterns so they can launch targeted analyses the moment a KPI looks strange. The goal is not real-time alerting but fast, defensible explanations of *why* a metric moved.
+
+## Typical Flow
+
+1. **Unified Data Workspace** – Connect ad platforms (Meta, Google), site/app telemetry (GA4, Snowplow), order & inventory systems, logistics data, and support tools. The workspace keeps refresh timestamps so each analysis knows which partitions are safe to use.
+2. **Business Intent Setup** – Describe the metrics that matter (conversion rate, AOV, gross margin, return rate, stockouts). Agents derive seasonal baselines and auto-segment by campaign, device, SKU, warehouse, or customer type.
+3. **Agent Exploration** – At the first sign of an anomaly, agents fork an analysis: they compare funnels, tie SKU performance to media spend, inspect search terms, or overlay fulfillment latency. Hypotheses that survive are bundled with statistics and sourcing SQL.
+4. **Insight Delivery** – Reports document the causal chain, financial impact, related SKUs/audiences, and recommended actions. Evidence packages contain SQL/notebooks, top complaint excerpts, and inventory snapshots so merchandising, product, and ops teams can act immediately.
+
+## Scenario: Weekend Conversion Rate Crash
+
+| Stage | What agents do | Artifacts you receive |
+|-------|----------------|-----------------------|
+| Detection | Mobile conversion fell to 1.8% vs. a 30-day average of 2.6% | Heads-up message listing affected device + traffic mix |
+| Diagnosis | Crossed campaigns, landing pages, SKUs, and browsers; found iOS Safari users failing checkout step 2 (p < 0.01) | Report section with funnel visualization, statistical output, and code links |
+| Evidence | Workspace bundle includes network log samples, impacted order IDs, payment-service latency chart, and SKU revenue deltas | Engineers + growth teams can reproduce the issue in minutes |
+| Follow-up | Auto-creates a "Checkout Experience" analysis that reruns daily for three days after the fix | Confirms whether the remediation worked |
+
+## Required Data
+
+| Source | Why it matters |
+|--------|----------------|
+| **Advertising & Spend** | Tie CAC/ROAS swings back to channel, creative, and audience choices |
+| **Web/App Behavior** | Track funnel steps, device performance, search/recommendation interactions |
+| **Orders & Inventory** | Measure SKU-level revenue, margins, discounts, stock positions |
+| **Logistics & CX** | Shipping SLAs, returns, NPS, ticket themes, refund drivers |
+
+## Questions Agents Can Answer
+
+```
+"Which channel drove the CAC spike this week and what changed inside that campaign?"
+"Why did AOV drop in North America, and which SKUs are responsible?"
+"How much revenue did stockouts cost us compared to rerouted spend?"
+"Which customer complaints map to higher return probability?"
+"Did the latest promotion actually improve first-purchase-to-repeat conversion?"
+```
+
+## Operating Tips
+
+- **Mix time grains** – Use hourly analyses for funnel metrics and daily runs for inventory/logistics to balance noise vs. insight.
+- **Assign owners** – Pipe each agent-generated analysis into your issue tracker or planning board so teams close the loop.
+- **Log business calendar events** – Record major promos, policy changes, or fulfillment constraints in the workspace; agents reference them to explain shifts instead of flagging false positives.
