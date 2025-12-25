@@ -93,11 +93,6 @@
     "global": {
       "anchors": [
         {
-          "anchor": "App",
-          "href": "https://app.skoutlab.com",
-          "icon": "rocket"
-        },
-        {
           "anchor": "Blog",
           "href": "https://skoutlab.com/blog",
           "icon": "newspaper"
