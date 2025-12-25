@@ -1,74 +1,71 @@
 ---
 title: Quickstart
-description: Get your first insights in 5 minutes
+description: Connect data, run an analysis, and read the report in minutes
 ---
 
-## Step 1: Connect Your Data
+## 1. Connect & Learn
 
 <Steps>
-  <Step title="Go to Data Sources">
-    Click **Data** in the sidebar to open the data management page.
+  <Step title="Open the Data workspace">
+    Click **Data** in the sidebar. This is the home for uploads and databases.
   </Step>
-  <Step title="Add a Connection">
-    Click **Add Connection** and choose your data source type:
-    - **Upload Files** — Excel, CSV, or Parquet files
-    - **Database** — Connect to PostgreSQL, MySQL, or other databases
+  <Step title="Add a connection">
+    Choose **Upload Files** for Excel/CSV/Parquet or **Database** for PostgreSQL, MySQL, MotherDuck, etc. Give each source a descriptive name.
   </Step>
-  <Step title="Let AI Learn">
-    Once connected, click **Start Learning**. Our AI will automatically explore your data structure, understand relationships, and build knowledge about your business.
+  <Step title="Start Knowledge Builder">
+    Hit **Start Learning** in the Knowledge Builder panel. Agents begin profiling schema, relationships, and data quality while you keep working.
   </Step>
 </Steps>
 
 <Info>
-The learning process runs in the background. You can start asking questions immediately — the AI will get smarter over time.
+Learning runs in the background. Even if you start an analysis immediately, the system keeps enriching its understanding for future runs.
 </Info>
 
-## Step 2: Ask Your First Question
+## 2. Ask a Question
 
 <Steps>
-  <Step title="Create a New Task">
-    Click **New Task** from the home page.
+  <Step title="Create a task">
+    From the dashboard, click **New Analysis**.
   </Step>
-  <Step title="Select Your Data">
-    Choose which data sources to analyze.
+  <Step title="Pick sources">
+    Select one or more connections. You can mix uploads and live warehouses.
   </Step>
-  <Step title="Ask a Question">
-    Type your question in plain language:
-    - "What drove revenue changes last quarter?"
-    - "Which products are underperforming?"
-    - "Are there any anomalies in the data?"
+  <Step title="Describe what you need">
+    Examples:
+    - “Why did revenue drop in Q4 versus Q3?”
+    - “Which customer segments are growing fastest?”
+    - “Scan our data for anomalies this month.”
 
-    Or leave it blank — SkoutLab will explore and find interesting patterns automatically.
+    Leave the prompt blank to let agents explore and surface noteworthy stories automatically.
   </Step>
-  <Step title="Get Results">
-    SkoutLab's AI agents will:
-    1. Generate hypotheses about your data
-    2. Test each hypothesis with statistical analysis
-    3. Present findings with evidence and charts
+  <Step title="Launch">
+    Click **Analyze**. Parallel agents explore, generate hypotheses, validate them statistically, and capture evidence in the workspace.
   </Step>
 </Steps>
 
-## Step 3: Review Your Report
+## 3. Read the Report
 
-Each analysis produces a report with:
-
-| Section | What You'll See |
-|---------|-----------------|
-| **Key Findings** | Top insights ranked by business impact |
-| **Evidence** | Charts, statistics, and data backing each finding |
-| **Next Steps** | Recommended actions based on the analysis |
+| Section | What it tells you |
+|---------|------------------|
+| **Executive summary** | Top takeaways, impact level, and recommended actions |
+| **Findings list** | Hypotheses ranked by significance; click any card for details |
+| **Evidence drawer** | Charts, metrics, code snippets, and data samples |
 
 <Tip>
-Click on any finding to see the detailed analysis, including the AI's reasoning process and supporting evidence.
+Use **Investigate Further** on any finding to spin up a follow-up analysis with the same context.
 </Tip>
 
-## What's Next?
+## 4. Download or Automate
+
+- **Download evidence packages** to share with engineers or auditors.
+- **Schedule** the analysis weekly/monthly to keep stakeholders updated.
+- **Keep Knowledge Builder running** so future tasks start with richer context.
 
 <CardGroup cols={2}>
-  <Card title="Connect More Data" icon="database" href="/getting-started/connect-data">
-    Add more data sources for richer insights
+  <Card title="Manage the Data workspace" icon="database" href="/getting-started/data-workspace">
+    Uploads, warehouses, and Knowledge Builder controls.
   </Card>
-  <Card title="Understand Reports" icon="file-chart-column" href="/getting-started/understand-reports">
-    Learn how to interpret and act on findings
+  <Card title="Interpret reports" icon="file-chart-column" href="/getting-started/understand-reports">
+    Learn how to read findings, evidence, and next steps.
   </Card>
 </CardGroup>

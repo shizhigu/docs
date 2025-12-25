@@ -1,68 +1,67 @@
 ---
 title: Welcome to SkoutLab
-description: Your AI data analyst that never sleeps
+description: The AI data analyst that explores, validates, and briefs you
 ---
 
-## What is SkoutLab?
+## What You Get
 
-SkoutLab is an **Agent-Native** data analysis platform. Instead of building dashboards or writing queries, you simply connect your data and let our AI agents do the work.
+SkoutLab replaces dashboards and ad‑hoc SQL with an **agent-native** workflow:
 
 <CardGroup cols={2}>
-  <Card
-    title="Connect Your Data"
-    icon="database"
-    href="/getting-started/connect-data"
-  >
-    Upload Excel files or connect to your database. SkoutLab understands your data automatically.
+  <Card title="Data Workspace" icon="database" href="/getting-started/data-workspace">
+    Drop in spreadsheets or connect live warehouses. SkoutLab maps tables, relationships, and quality issues for you.
   </Card>
-  <Card
-    title="Ask Questions"
-    icon="message-question"
-    href="/getting-started/first-analysis"
-  >
-    Ask in plain language. "Why did sales drop last month?" — get answers, not charts to figure out yourself.
+  <Card title="Smart Analysis" icon="sparkles" href="/features/smart-analysis">
+    Ask a question (“Why did revenue drop in Q4?”) or let the AI explore. Agents generate hypotheses, run tests, and surface the real drivers.
   </Card>
-  <Card
-    title="Continuous Insights"
-    icon="brain"
-    href="/features/knowledge-builder"
-  >
-    Our AI continuously learns your data, monitors for anomalies, and alerts you to what matters.
+  <Card title="Continuous Learning" icon="brain" href="/features/knowledge-builder">
+    Keep the Knowledge Builder running to monitor schema changes, freshness, and anomalies without writing alerts.
   </Card>
-  <Card
-    title="Actionable Reports"
-    icon="file-chart-column"
-    href="/features/reports"
-  >
-    Get executive-ready reports with findings, evidence, and recommended next steps.
+  <Card title="Actionable Reports" icon="file-chart-column" href="/features/reports">
+    Every analysis becomes an executive-ready narrative with evidence, impact, and recommended next steps.
   </Card>
 </CardGroup>
 
-## Why Agent-Native?
+## Why Agent-Native > Traditional BI
 
-Traditional BI tools give you **charts**. You still have to figure out what they mean.
+Traditional BI gives you **dashboards** and expects you to interpret them. SkoutLab gives you **briefings** backed by data:
 
-SkoutLab gives you **answers**. Our AI agents:
-
-- **Explore** your data like a human analyst would
-- **Generate hypotheses** about what's happening
-- **Validate** findings with statistical rigor
-- **Explain** results in plain language
+- **Explore** – Agents crawl every relevant table and learn normal behavior.
+- **Hypothesize** – Potential causes are drafted automatically.
+- **Validate** – Statistical tests confirm (or refute) each idea.
+- **Explain** – Findings are translated into plain language with recommended actions.
 
 <Tip>
-Think of it as having a tireless data analyst on your team — one who knows your data inside out and proactively finds what you need to know.
+Think of SkoutLab as the analyst who never sleeps: it understands context, keeps historical memory, and keeps iterating when you click “Investigate Further”.
 </Tip>
 
-## Quick Links
+## End-to-End Flow
+
+<Timeline>
+  <TimelineItem title="Connect & Learn" icon="plug">
+    Upload files or point to a warehouse → start Knowledge Builder → SkoutLab documents schema, joins, and health.
+  </TimelineItem>
+  <TimelineItem title="Ask or Explore" icon="message-question">
+    Create a task with a natural-language question or let agents explore freely.
+  </TimelineItem>
+  <TimelineItem title="Validate & Synthesize" icon="chart-mixed">
+    Multiple agents test hypotheses in parallel, rank them by business impact, and capture evidence in the workspace.
+  </TimelineItem>
+  <TimelineItem title="Brief & Automate" icon="clipboard-check">
+    Review the report, download evidence packages, schedule recurring tasks, or let Continuous Learning monitor for you.
+  </TimelineItem>
+</Timeline>
+
+## Jump In
 
 <CardGroup cols={3}>
   <Card title="Quickstart" icon="rocket" href="/quickstart">
-    Get up and running in 5 minutes
+    Connect data, run your first analysis, and read the report.
   </Card>
-  <Card title="Use Cases" icon="lightbulb" href="/use-cases/sales-analysis">
-    See real-world examples
+  <Card title="Data Workspace" icon="folder" href="/getting-started/data-workspace">
+    Learn how uploads, databases, and Knowledge Builder fit together.
   </Card>
-  <Card title="Core Concepts" icon="book" href="/concepts/agent-native">
-    Understand how it works
+  <Card title="Smart Analysis" icon="lightbulb" href="/features/smart-analysis">
+    See how agents generate and validate insights.
   </Card>
 </CardGroup>

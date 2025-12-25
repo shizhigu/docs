@@ -227,6 +227,62 @@ PYTHONPATH=src python -m arq signal_agent.workers.settings.WorkerSettings
 |-----|------|
 | `arq:signal-scout` | Job 队列 |
 | `analysis:{id}:directions_remaining` | 跟踪剩余 directions |
+| `modal:global:concurrent` | 全局 Modal 并发计数 |
+| `modal:user:{user_id}:concurrent` | 每用户 Modal 并发计数 |
+| `modal:analysis:{analysis_id}:concurrent` | 每分析 Modal 并发计数 |
+
+---
+
+## Modal 并发控制
+
+由于 Modal 免费层限制最多 100 个 containers 并发，我们使用 Redis 信号量进行并发控制：
+
+```python
+# config.py 配置
+modal_max_concurrent: int = 20     # 全局最大并发 Modal 调用
+modal_max_per_user: int = 5        # 每用户最大并发
+modal_max_per_analysis: int = 3    # 每分析最大并发 directions
+```
+
+### 工作原理
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    Modal Semaphore Flow                          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│   Job 开始                                                       │
+│       │                                                          │
+│       ▼                                                          │
+│   ┌─────────────────────────────────────────┐                   │
+│   │  检查并发限制 (Redis GET)                │                   │
+│   │  - modal:global:concurrent < 20?        │                   │
+│   │  - modal:user:{id}:concurrent < 5?      │                   │
+│   │  - modal:analysis:{id}:concurrent < 3?  │                   │
+│   └─────────────────────┬───────────────────┘                   │
+│                         │                                        │
+│            ┌────────────┴────────────┐                          │
+│            │                         │                          │
+│         可获取                     需等待                        │
+│            │                         │                          │
+│            ▼                         ▼                          │
+│   ┌─────────────────┐      ┌─────────────────┐                  │
+│   │  INCR 所有计数器  │      │  Sleep 1s       │                  │
+│   │  执行 Modal 调用  │      │  重试检查       │                  │
+│   │  DECR 所有计数器  │      └────────┬────────┘                  │
+│   └─────────────────┘               │                           │
+│                                     └──→ (回到检查)              │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### 环境变量
+
+```bash
+MODAL_MAX_CONCURRENT=20    # 全局限制
+MODAL_MAX_PER_USER=5       # 每用户限制
+MODAL_MAX_PER_ANALYSIS=3   # 每分析限制
+```
 
 ---
 

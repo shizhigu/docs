@@ -24,17 +24,25 @@
             "group": "Getting Started",
             "pages": [
               "getting-started/connect-data",
+              "getting-started/data-workspace",
               "getting-started/first-analysis",
               "getting-started/understand-reports"
             ]
           },
           {
-            "group": "Features",
+            "group": "Everyday Workflows",
             "pages": [
-              "features/data-connections",
-              "features/knowledge-builder",
               "features/smart-analysis",
-              "features/reports"
+              "features/reports",
+              "features/workspace"
+            ]
+          },
+          {
+            "group": "Automation & Monitoring",
+            "pages": [
+              "features/knowledge-builder",
+              "features/automation",
+              "features/data-connections"
             ]
           },
           {

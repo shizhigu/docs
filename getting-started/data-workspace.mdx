@@ -1,0 +1,98 @@
+---
+title: Data Workspace
+description: Manage uploads, databases, and Knowledge Builder in one place
+---
+
+The **Data** page is where everything begins. It gives you a single workspace to:
+
+<CardGroup cols={3}>
+  <Card title="See every connection" icon="folder">
+    Files, warehouses, and knowledge status at a glance.
+  </Card>
+  <Card title="Control Knowledge Builder" icon="brain">
+    Start/stop continuous learning and monitor activity.
+  </Card>
+  <Card title="Stage evidence" icon="file-chart-column">
+    Upload supporting files or manage workspace artifacts for reports.
+  </Card>
+</CardGroup>
+
+## Page Layout
+
+<Image src="/images/hero-light.png" alt="Data Workspace layout" />
+
+| Area | Purpose |
+|------|---------|
+| **Knowledge Builder panel** | Shows whether continuous learning is running, last refresh, and error states. |
+| **Database connections** | Cards for each warehouse/source with status, last sync, and quick actions. |
+| **Uploaded files** | Drag-and-drop zone plus a list of file-based datasets. |
+
+## Adding Data
+
+<Steps>
+  <Step title="Upload files">
+    - Click **Add Connection → File Upload**
+    - Drop Excel/CSV/Parquet files or select them from your computer
+    - SkoutLab automatically extracts schema metadata and file stats
+  </Step>
+  <Step title="Connect a warehouse">
+    - Click **Add Connection → Database**
+    - Enter connection credentials (host, DB, username, password/token)
+    - Use **Test Connection** to validate before saving
+    - SkoutLab stores credentials encrypted and only reads data
+  </Step>
+  <Step title="Name & tag">
+    Use descriptive names like “CRM – Prod” or “Finance – Actuals” so analyses are easy to target.
+  </Step>
+</Steps>
+
+<Tip>
+You can connect multiple sources at once. Analyses can span uploads *and* live databases without manual joins.
+</Tip>
+
+## Knowledge Builder Controls
+
+The Knowledge Builder panel mirrors the Continuous Learning toggle in the app:
+
+| State | What It Means |
+|-------|---------------|
+| **Idle** | Waiting for you to click **Start Learning**. |
+| **Learning…** | Agents are crawling schema, profiling values, and updating the knowledge graph. |
+| **Error** | Credentials expired or data proxy unavailable. Click **View Logs** for details. |
+
+<Steps>
+  <Step title="Start">
+    Click **Start Learning**. The panel shows progress counters (tables scanned, insights learned) and next scheduled pass.
+  </Step>
+  <Step title="Monitor">
+    If you leave the page, the badge in the sidebar keeps showing whether learning is active.
+  </Step>
+  <Step title="Stop">
+    Hit **Stop** any time. Sessions finish their current pass and then release compute resources.
+  </Step>
+</Steps>
+
+<Warning>
+Running continuous learning consumes compute. For large warehouses, consider scheduled runs (daily/weekly) using the automation guide.
+</Warning>
+
+## Connection Management
+
+Each connection card exposes quick actions:
+
+- **Upload files** directly into that connection
+- **Trigger test** to verify credentials still work
+- **Open config** to rename, update tokens, or remove
+- **Download evidence** from previous analyses (for file connections)
+
+<Tip>
+After uploading or deleting files via the modals, the list refreshes automatically—no page reload needed.
+</Tip>
+
+## Best Practices
+
+- Keep production and sandbox data separate so you can target the right environment when asking questions.
+- Use the description field to note refresh cadence or owner (“Updated nightly via Airflow”).
+- Let Knowledge Builder finish at least one full pass before running exploratory analyses—it improves speed and accuracy.
+
+Next: [Run your first analysis →](/getting-started/first-analysis)

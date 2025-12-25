@@ -1,99 +1,86 @@
 ---
 title: Smart Analysis
-description: AI-powered insights from your data
+description: Let AI analysts explore your data, test ideas, and brief you
 ---
 
 ## Overview
 
-Smart Analysis is SkoutLab's core capability — transforming raw data into actionable insights through AI-powered hypothesis generation and validation.
+Smart Analysis is the experience of working with a tireless analyst. You describe what you want to learn (or simply ask SkoutLab to explore) and a team of agents handles:
 
-## How It's Different
+<CardGroup cols={2}>
+  <Card title="Exploration" icon="map">
+    Agents map tables, track lineage, and understand what “normal” looks like using Knowledge Builder.
+  </Card>
+  <Card title="Hypothesis Lab" icon="flask">
+    Potential explanations are generated automatically—each one is testable.
+  </Card>
+  <Card title="Validation" icon="chart-line">
+    Statistical notebooks run in parallel to confirm or refute every hypothesis.
+  </Card>
+  <Card title="Briefing" icon="clipboard-check">
+    Findings are ranked by impact and translated into plain language with next steps.
+  </Card>
+</CardGroup>
 
-| Traditional BI | SkoutLab |
-|----------------|----------|
-| You build dashboards | AI explores for you |
-| You write queries | You ask questions |
-| Charts to interpret | Findings explained |
-| Manual exploration | Automated discovery |
+## Modes You Can Run
 
-## Analysis Modes
-
-### Question-Driven
-
-Ask a specific question and get a focused analysis:
-
-> "Why did customer churn increase in Q4?"
-
-SkoutLab will:
-1. Identify relevant data
-2. Generate hypotheses about causes
-3. Test each hypothesis
-4. Report validated findings
+### Question-driven
+Provide context such as “Why did revenue drop in Q4?” Agents focus on that metric/time period and return a focused briefing.
 
 ### Exploratory
+Leave the prompt blank and let the agents scout for anything noteworthy—anomalies, breakouts, seasonality, or risk indicators.
 
-Don't know what to ask? Let SkoutLab explore:
+### Follow-up
+From any finding, click **Investigate Further**. SkoutLab clones the context and dives deeper without you rebuilding filters or prompts.
 
-> "What's interesting in our sales data?"
-
-The AI will:
-1. Scan for patterns and anomalies
-2. Identify significant trends
-3. Surface unexpected relationships
-4. Highlight areas needing attention
-
-## The Analysis Process
+## Behind the Scenes
 
 <AccordionGroup>
-  <Accordion title="Step 1: Understanding Context">
-    SkoutLab uses Knowledge Builder's learnings to understand:
-    - What metrics matter
-    - How tables relate
-    - What's "normal" for your data
+  <Accordion title="1. Understand context">
+    Knowledge Builder’s learnings (schemas, joins, synonyms) guide agents to the right tables and metrics.
   </Accordion>
-  <Accordion title="Step 2: Hypothesis Generation">
-    Based on your question (or general exploration), AI generates testable hypotheses:
-    - "Revenue dropped because of Product X"
-    - "Churn correlates with support ticket volume"
-    - "Sales peak on Tuesdays"
+  <Accordion title="2. Generate hypotheses">
+    Statements such as “Enterprise deals slipped 18%” or “Product X win rate dropped” are drafted automatically.
   </Accordion>
-  <Accordion title="Step 3: Statistical Validation">
-    Each hypothesis is rigorously tested:
-    - Significance testing
-    - Effect size calculation
-    - Confidence intervals
+  <Accordion title="3. Validate statistically">
+    Each hypothesis gets a notebook that runs significance tests, calculates effect sizes, and produces charts/data samples.
   </Accordion>
-  <Accordion title="Step 4: Synthesis">
-    Results are compiled into a report:
-    - Key findings ranked by impact
-    - Evidence for each finding
-    - Recommended next steps
+  <Accordion title="4. Synthesize">
+    Confirmed items become Findings, refuted ones document what’s *not* happening, and inconclusive ones suggest data gaps.
   </Accordion>
 </AccordionGroup>
 
-## Analysis Settings
+## Working in the Report Viewer
 
-When creating a task, you can configure:
+- **View modes:** Board (risk/opportunity columns), List (dense table with sorting), Topics (clustered by AI-generated themes).
+- **Filters:** Status, impact, topic, agent, significance. Combine them to hone in on the knottiest issues.
+- **Drawer:** Clicking a finding opens the narrative, charts, statistics, and workspace downloads.
 
-| Setting | Description |
-|---------|-------------|
-| **Data Sources** | Which connections to analyze |
-| **Question** | Your specific question (optional) |
-| **Depth** | How many hypotheses to generate |
+## Settings to Tune
 
-## Tips for Better Results
+| Setting | What it controls |
+|---------|-----------------|
+| **Data Sources** | Choose which connections are included. SkoutLab handles joins automatically. |
+| **Prompt** | Natural-language question or context (optional). |
+| **Depth** | How many hypotheses each agent should pursue. |
+| **Mode** | Exploratory vs question-driven. |
+| **Sensitive fields** | Columns you want the AI to ignore (PII, salaries, etc.). |
+
+## Best Practices
 
 <CardGroup cols={2}>
-  <Card title="Be Specific" icon="bullseye">
-    Include time ranges, segments, and metrics of interest
+  <Card title="Start broad" icon="magnifying-glass">
+    Run an exploratory sweep to see what the AI finds before narrowing the scope.
   </Card>
-  <Card title="Start Broad" icon="search">
-    If unsure, start with exploratory analysis, then drill down
+  <Card title="Provide context" icon="comment">
+    Mention timeframes (“Q4 vs Q3”), segments, or metrics to cut noise.
   </Card>
   <Card title="Iterate" icon="rotate">
-    Use findings to formulate more specific follow-up questions
+    Use follow-up analyses to drill down instead of starting from scratch.
   </Card>
-  <Card title="Connect Data" icon="link">
-    More data sources enable richer cross-cutting insights
+  <Card title="Review evidence" icon="chart-column">
+    Every finding links to the generated charts/notebooks so you can audit the work.
   </Card>
 </CardGroup>
+
+Next: [Read the Evidence Workspace →](/features/workspace)
