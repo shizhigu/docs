@@ -1,0 +1,67 @@
+---
+title: Evidence Packages
+description: Export notebooks, SQL, and charts from every analysis
+---
+
+Every investigation leaves a trail of artifacts—SQL queries, notebooks, charts, and sampling notes. SkoutLab bundles those files into **Evidence Packages** so teams can review or re-run the work without digging through the UI. Use this page to understand how to grab the package you need.
+
+## Access a Package
+
+From any report:
+
+<Steps>
+  <Step title="Open a finding">
+    Click a hypothesis card to expand its drawer.
+  </Step>
+  <Step title="Review evidence">
+    Scroll past the narrative until you reach the evidence attachments section.
+  </Step>
+  <Step title="Download">
+    Choose **Download Evidence Package** to grab a zip of everything created for that hypothesis.
+  </Step>
+</Steps>
+
+Packages download instantly so you can attach them to tickets, upload to shared drives, or archive for audit purposes.
+
+## What’s Inside
+
+| Item | Description |
+|------|-------------|
+| `notebooks/analysis.py` | Generated Python notebook or script used to validate the hypothesis. |
+| `charts/*.png` | High-resolution PNG exports for every visualization referenced in the report. |
+| `summary.md` | Markdown description of the finding, metrics, and confidence level. |
+| `data-samples.csv` | Anonymized sample rows that back up the insight. |
+
+Each file is labeled with the analysis ID and hypothesis ID so you can trace it back to the original run.
+
+## APIs for Automation
+
+<Image src="/images/checks-passed.png" alt="Evidence file browser" />
+
+- **Charts API** – `/api/charts/...` streams chart images for embedding elsewhere.
+- **Evidence Files API** – `/api/workspace-files/...` lists the generated notebooks or scripts.
+- **Evidence Package API** – `/api/evidence-package/...` zips and serves the entire artifact set.
+
+All endpoints enforce `X-User-ID` headers for ownership checks, so only the creator (or an explicitly shared account) can fetch these assets.
+
+## When It Helps
+
+<CardGroup cols={3}>
+  <Card title="Audit & Compliance" icon="shield">
+    Keep the evidence zip as proof of how the KPI or report was produced.
+  </Card>
+  <Card title="Data Team Handoffs" icon="people-group">
+    Share the notebook/SQL so engineers can productionize the logic.
+  </Card>
+  <Card title="Manual Deep-Dives" icon="microscope">
+    Pull everything locally if you want to rerun or extend the experiment.
+  </Card>
+</CardGroup>
+
+## Tips
+
+- Each hypothesis has its own package—download only what your workflow needs.
+- Files stick around for the lifetime of the analysis; deleting the report removes the associated evidence immediately.
+- Use the APIs above if you want to mirror packages into your own storage bucket.
+
+Ready to keep agents working continuously? Jump to [Automation & Scheduled Analyses →](/features/automation)

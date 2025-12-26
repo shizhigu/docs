@@ -11,7 +11,7 @@ SaaS economics are tightly coupled: acquisition, conversion, adoption, retention
 
 1. **Connect & Map** – Plug Stripe/Chargebee, your CRM pipeline, product analytics (Segment, Snowplow, Amplitude), and support tools into the Data Workspace. Knowledge Builder keeps learning every table's refresh cadence, lineage, and semantics so analyses always have current context.
 2. **Define Business Lenses** – Tell SkoutLab which views deserve the most attention (ARR, net retention, onboarding completion, PQL volume, activation milestones). Agents derive baselines from history and compare sub-segments automatically.
-3. **Agent-Led Analysis** – When a KPI deviates, agents create a task that drafts hypotheses, runs cohort and statistical tests, inspects product usage, and lines up possible causes. SQL, notebooks, and charts land in the Evidence Workspace for auditability.
+3. **Agent-Led Analysis** – When a KPI deviates, agents create a task that drafts hypotheses, runs cohort and statistical tests, inspects product usage, and lines up possible causes. SQL, notebooks, and charts land in downloadable Evidence Packages for auditability.
 4. **Brief & Act** – Findings are packaged as "insight → impact → next steps" and routed to GTM, Product, or CS leads. Subscribe any analysis to rerun weekly/monthly so leadership always has a fresh brief.
 
 ## Example: Net Retention Slips for Two Weeks
@@ -20,7 +20,7 @@ SaaS economics are tightly coupled: acquisition, conversion, adoption, retention
 |-------|----------------|------------------|
 | Detect | Net retention stayed below 100% for two consecutive weeks, ~4.2σ below the 90-day rolling mean | Slack/Email heads-up naming the metric and affected customer cohort |
 | Explore | 1,000+ hypotheses tested across geography, segment, plan, usage depth. Result: US SMB customers on the Scale plan drove 70% of the drop | Report call-out summarizing this cohort and the statistical confidence |
-| Evidence | Workspace bundle includes SQL for churn cohort, cancellation reason bar chart, feature-usage heatmap, and list of high-risk accounts | CS team can jump straight into outreach without rebuilding queries |
+| Evidence | Package includes SQL for churn cohort, cancellation reason bar chart, feature-usage heatmap, and list of high-risk accounts | CS team can jump straight into outreach without rebuilding queries |
 | Follow-up | Automation sets a recurring "SMB NRR Watch" analysis and pushes risky accounts into the CRM playbook | Ensures the issue stays visible until it recovers |
 
 ## Required Data
